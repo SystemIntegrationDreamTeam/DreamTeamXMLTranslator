@@ -16,22 +16,22 @@
             <classpath path="${libs.jaxws21.classpath}"/>
         </taskdef>
     </target>
-    <target name="wsimport-client-requestLoan" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/requestLoan"/>
-        <property name="wsdl-requestLoan" location="xml-resources/web-service-references/requestLoan/wsdl/localhost_8080/requestLoan/requestLoan.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/requestLoan" destdir="${build.generated.dir}/jax-wsCache/requestLoan" wsdl="${wsdl-requestLoan}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/requestLoan/requestLoan?wsdl" xnocompile="true" xendorsed="true" package="dreamteamxmltranslator">
-            <depends file="${wsdl-requestLoan}"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/requestLoan"/>
+    <target name="wsimport-client-DreamTeamXML" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/DreamTeamXML"/>
+        <property name="wsdl-DreamTeamXML" location="xml-resources/web-service-references/DreamTeamXML/wsdl/localhost_8080/getLoan/DreamTeamXML.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/DreamTeamXML" destdir="${build.generated.dir}/jax-wsCache/DreamTeamXML" wsdl="${wsdl-DreamTeamXML}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/getLoan/DreamTeamXML?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-DreamTeamXML}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/DreamTeamXML"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/requestLoan">
+            <fileset dir="${build.generated.dir}/jax-wsCache/DreamTeamXML">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-requestLoan" depends="-init-project">
-        <delete dir="${build.generated.dir}/jax-wsCache/requestLoan"/>
-        <delete dir="${build.generated.sources.dir}/jax-ws/dreamteamxmltranslator"/>
+    <target name="wsimport-client-clean-DreamTeamXML" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/DreamTeamXML"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/mycompany/dreamteamxml"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-requestLoan"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-DreamTeamXML"/>
 </project>

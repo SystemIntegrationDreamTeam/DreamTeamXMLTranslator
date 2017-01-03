@@ -6,6 +6,27 @@
 
 <xs:element name="requestResponse" type="tns:requestResponse"/>
 
+<xs:element name="sender" type="tns:sender"/>
+
+<xs:element name="senderResponse" type="tns:senderResponse"/>
+
+<xs:complexType name="sender">
+<xs:sequence>
+<xs:element name="arg0" type="xs:double"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="senderResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="IOException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="request">
 <xs:sequence>
 <xs:element name="ssn" type="xs:string" minOccurs="0"/>
@@ -18,12 +39,6 @@
 <xs:complexType name="requestResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="IOException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

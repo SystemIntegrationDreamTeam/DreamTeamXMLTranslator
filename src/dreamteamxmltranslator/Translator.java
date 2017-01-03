@@ -5,6 +5,7 @@
  */
 package dreamteamxmltranslator;
 
+import com.mycompany.dreamteamxml.IOException_Exception;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -32,7 +33,6 @@ public class Translator {
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("datdb.cphbusiness.dk");
-        factory.setVirtualHost("student");
         factory.setUsername("Dreamteam");
         factory.setPassword("bastian");
         Connection connection = factory.newConnection();
@@ -71,9 +71,11 @@ public class Translator {
     }
 
     private static String request(java.lang.String ssn, int creditScore, double loanAmount, int loanDuration) throws IOException_Exception {
-        dreamteamxmltranslator.RequestLoan_Service service = new dreamteamxmltranslator.RequestLoan_Service();
-        dreamteamxmltranslator.RequestLoan port = service.getRequestLoanPort();
+        com.mycompany.dreamteamxml.GetLoan service = new com.mycompany.dreamteamxml.GetLoan();
+        com.mycompany.dreamteamxml.DreamTeamXML port = service.getDreamTeamXMLPort();
         return port.request(ssn, creditScore, loanAmount, loanDuration);
     }
+
+  
 
 }
